@@ -4,6 +4,18 @@
 <title>VargaxTune</title>
 </head>
 <body>
-<h1>VargaxTune</h1>
+<div class="div1">
+  <img src="style/images/vargaxtune.png">
+</div>
+<div class="div2">
+<table>
+<tr>
+<th><h2>Nombre</h2></th>
+</tr>
+<tr>
+<th><h2>Tipo</h2></th>
+</tr>
+</table>
+</div>
 </body>
 </html>
