@@ -14,18 +14,13 @@ body {
 
 table{
 	border-collapse: collapse;
-	border: black 2px solid;
+	border: #FFFF00 7px solid;
 	margin: auto;
 	align-content: center;
 	padding: 15px;
 }
 
 th {
-margin: 15px;
-padding: 15px;
-}
-
-tr {
-margin-left: 15px;
-padding: 15px;
+margin: 300px;
+padding: 80px;
 }

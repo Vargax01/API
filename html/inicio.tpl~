@@ -10,12 +10,14 @@
 <div class="div2">
 <table>
 <tr>
-<td><h2>Nombre</h2><td>
+<th></th>
+<th><h2>Nombre</h2></th>
+<th></th>
 </tr>
 <tr>
-<td><h2>Tipo</h2><td>
+<th><h2>Tipo</h2></th>
 </tr>
-</table>
+</table>	
 </div>
 </body>
 </html>
