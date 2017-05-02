@@ -12,7 +12,7 @@ def inicio2():
     para2=str(request.forms.get('tipo'))
     return """<h1>%s %s</h1>"""%(para1,para2)
 
-@route('/file /<filepath:path>')
+@route('/style/<filepath:path>')
 def server_static(filepath):
     return static_file(filepath,root='html/style')
 

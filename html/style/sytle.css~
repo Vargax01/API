@@ -13,11 +13,11 @@ body {
 }
 
 table{
-	border-collapse: collapse;
 	border: #FFFF00 7px solid;
 	margin: auto;
 	align-content: center;
 	padding: 15px;
+	border-radius: 50px 50px 50px 50px;
 }
 
 th {
@@ -25,6 +25,6 @@ margin: 100px;
 padding: 20px;
 }
 .buscar {
-margin-top: 20px
-margin-left: 440px
+margin-top: 20px;
+margin-left: 440px;
 }

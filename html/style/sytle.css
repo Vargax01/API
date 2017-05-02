@@ -13,11 +13,11 @@ body {
 }
 
 table{
-	border-collapse: collapse;
 	border: #FFFF00 7px solid;
 	margin: auto;
 	align-content: center;
 	padding: 15px;
+	border-radius: 30px 30px 30px 30px;
 }
 
 th {

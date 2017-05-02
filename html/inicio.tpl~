@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<link rel="stylesheet" type="text/css" href="style/sytle.css" />
+<link rel="stylesheet" type="text/css" href="html/style/sytle.css" />
 <meta charset="utf-8">
 <title>VargaxTune</title>
 </head>
 <body>
 <div class="div1">
-  <img src="style/images/vargaxtune.png"><br>
-  <img src="style/images/itunes.png">
+  <img src="html/style/images/vargaxtune.png"><br>
+  <img src="html/style/images/itunes.png">
 </div>
 <div class="div2">
-<form id="formulario" action="/inicio" method="post">
+<form id="formulario" action="inicio" method="post">
 <table>
 <tr>
 <th></th>
