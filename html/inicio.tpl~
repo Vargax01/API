@@ -1,23 +1,48 @@
-<html>
+<!DOCTYPE html>
+<html lang="es">
 <head>
 <link rel="stylesheet" type="text/css" href="style/sytle.css" />
+<meta charset="utf-8">
 <title>VargaxTune</title>
 </head>
 <body>
 <div class="div1">
-  <img src="style/images/vargaxtune.png">
+  <img src="style/images/vargaxtune.png"><br>
+  <img src="style/images/itunes.png">
 </div>
 <div class="div2">
+<form id="formulario" action="/inicio" method="post">
 <table>
 <tr>
 <th></th>
-<th><h2>Nombre</h2></th>
+<th><h2>Nombre Canción, Album o Artista</h2></th>
 <th></th>
 </tr>
 <tr>
-<th><h2>Tipo</h2></th>
+<th></th>
+<th><input type="text" name="nombre"/></th>
+<th></th>
 </tr>
-</table>	
+<tr>
+<th></th>
+<th><h2>Buscar por</h2></th>
+<th></th>
+</tr>
+<tr>
+<th></th>
+<th>
+<select id="tipo" name="tipo">
+ <option value="" selected="seleccion">Buscar por</option>
+ <option value="artista">Artista</option>
+ <option value="cancion">Canción</option>
+ <option value="album">Album</option> 
+ </select>
+</th>
+<th></th>
+</tr>
+</table>
+<input type="submit" name="buscar" value="Buscar" class="buscar" />
+</form>
 </div>
 </body>
 </html>

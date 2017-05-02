@@ -21,6 +21,10 @@ table{
 }
 
 th {
-margin: 300px;
-padding: 80px;
+margin: 100px;
+padding: 20px;
+}
+.buscar {
+margin-top: 20px;
+margin-left: 440px;
 }
