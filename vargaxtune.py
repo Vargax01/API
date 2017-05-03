@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from bottle import route, run, request, template, static_file, redirect
+from sys import argv
 
 @route('/inicio',method="get")
 @route('/')
@@ -35,5 +36,5 @@ def music(para1):
 def server_static(filepath):
     return static_file(filepath,root='html/style')
 
-
-run(host='0.0.0.0', port=8081, debug=True)
+if __name__ == '__main__':
+    run(host='0.0.0.0', port=argv[1], debug=True)
