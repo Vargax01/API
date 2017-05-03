@@ -36,5 +36,4 @@ def music(para1):
 def server_static(filepath):
     return static_file(filepath,root='html/style')
 
-if __name__ == '__main__':
-    run(host='0.0.0.0', port=argv[1], debug=True)
+run(host='0.0.0.0', port=argv[1])
