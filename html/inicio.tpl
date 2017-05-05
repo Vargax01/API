@@ -32,7 +32,7 @@
 <th></th>
 <th>
 <select id="tipo" name="tipo">
- <option value="" selected="seleccion">Buscar por</option>
+ <option value="" selected="seleccion">--Categoría--</option>
  <option value="artista">Artista</option>
  <option value="cancion">Canción</option>
  <option value="album">Album</option> 
