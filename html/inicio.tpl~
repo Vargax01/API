@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<link rel="stylesheet" type="text/css" href="style/sytle.css" />
+<link rel="stylesheet" type="text/css" href="/style/sytle.css" />
 <meta charset="utf-8">
 <title>VargaxTune</title>
 </head>

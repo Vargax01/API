@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from bottle import route, run, request, template, static_file, redirect
-from sys import argv
 import requests
 import json
 @route('/inicio',method="get")
@@ -37,7 +36,7 @@ def album(para1):
         js1=json.loads(r1.text)
         diccio={"album":js1["results"][0]["collectionName"],"imagen":js1["results"][0]["artworkUrl100"]}
         listalbum.append(diccio)
-    return template('html/albumes.tpl',listalbum=listalbum)
+    return template('html/albumes.tpl',listalbum=listalbum,album1=para1)
 
 @route('/artista/<para1>')
 def artista(para1):
@@ -56,4 +55,4 @@ def server_static(filepath):
     return static_file(filepath,root='html/style')
 
 
-run(host='0.0.0.0', port=argv[1])
+run(host='0.0.0.0', port=8081, debug=True)
