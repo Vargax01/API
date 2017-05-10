@@ -1,0 +1,24 @@
+body {
+  background: url("images/fondoalbum.jpg") top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.div1 {
+ text-align: center;
+}
+table tr {
+	border: orange 7px solid;
+	margin: auto;
+	text-align: left;
+	padding: 15px;
+}
+th {
+border: #DF01D7 7px solid;
+margin: auto;
+padding: 15px;
+border-radius: 10px 10px 10px 10px;
+}
+
+h4 {
+color: #81F7F3;
+}
