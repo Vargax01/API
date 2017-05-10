@@ -10,7 +10,7 @@
 % cont=0
 <table>
 % for album in listalbum:
-	% if cont == 8:
+	% if cont == 10:
 		<tr>
 		<th><h4>{{album["album"]}}</h4>
 		<img src={{album["imagen"]}}></th>

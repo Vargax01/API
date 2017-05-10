@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from bottle import route, run, request, template, static_file, redirect
 import requests
+from sys import argv
 import json
 @route('/inicio',method="get")
 @route('/')
@@ -54,5 +55,5 @@ def error():
 def server_static(filepath):
     return static_file(filepath,root='html/style')
 
-
-run(host='0.0.0.0', port=8081, debug=True)
+run(host='0.0.0.0', port=argv[1])
+#run(host='0.0.0.0', port=8081, debug=True)
