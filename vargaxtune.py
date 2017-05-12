@@ -41,7 +41,17 @@ def album(para1):
 
 @route('/canciones/<codigo>')
 def canciones(codigo):
-    return """<h1>Canciones del album %s</h1>"""%(codigo)
+    payload={"id":codigo,"enity":"song","country":"ES"}
+    req=requests.get('https://itunes.apple.com/lookup',params=payload)
+    js=json.loads(req.text)
+    nomalbum=js["results"][0]["collectionName"]
+    img=js["results"][0]["artworkUrl100"]
+    listacanc=[]
+    for cancion in js["results"]:
+        if cancion.get("kind") != None:
+            candiccio={"nombre":cancion["trackName"],"artista":cancion["artistName"],"media":cancion["previewUrl"]}
+            listacanc.append(candiccio)
+    return template('html/canciones.tpl',nomalbum=nomalbum)
 
 @route('/artista/<para1>')
 def artista(para1):
