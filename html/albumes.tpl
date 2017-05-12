@@ -9,19 +9,24 @@
 <img src="/style/images/itunespeque.png">
 % cont=0
 <table>
+<form id="albumes" action="album" method="post">
 % for album in listalbum:
 	% if cont == 8:
-		<tr>
-		<th><h4>{{album["album"]}}</h4>
-		<img src={{album["imagen"]}}></th>
+	   <tr>
+		<th><a title="{{album["codigo"]}}" href="/canciones/{{album["codigo"]}}"><h4>{{album["album"]}}</h4></a>
+		<img src={{album["imagen"]}}>
+		<h4>Artista: {{album["artista"]}}</h4>		
+		</th>
 		</tr>
 		% cont=0
 	% else:
-		<th><h4>{{album["album"]}}</h4>
-		<img src={{album["imagen"]}}></th>
+		<th><a title="{{album["codigo"]}}" href="/canciones/{{album["codigo"]}}"><h4>{{album["album"]}}</h4></a>
+		<img src={{album["imagen"]}}>
+		<h4>Artista: {{album["artista"]}}</h4></th>
 	% end
 % cont=cont+1
 % end
+</form>
 </table>
 </body>
 </html>

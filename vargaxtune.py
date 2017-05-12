@@ -35,9 +35,13 @@ def album(para1):
         payload2={"id":album,"country":"ES"}
         r1=requests.get('https://itunes.apple.com/lookup',params=payload2)
         js1=json.loads(r1.text)
-        diccio={"album":js1["results"][0]["collectionName"],"imagen":js1["results"][0]["artworkUrl100"]}
+        diccio={"album":js1["results"][0]["collectionName"],"imagen":js1["results"][0]["artworkUrl100"],"codigo":album,"artista":js1["results"][0]["artistName"]}
         listalbum.append(diccio)
     return template('html/albumes.tpl',listalbum=listalbum,album1=para1)
+
+@route('/canciones/<codigo>')
+def canciones(codigo):
+    return """<h1>Canciones del album %s</h1>"""%(codigo)
 
 @route('/artista/<para1>')
 def artista(para1):
@@ -55,5 +59,5 @@ def error():
 def server_static(filepath):
     return static_file(filepath,root='html/style')
 
-run(host='0.0.0.0', port=argv[1])
-#run(host='0.0.0.0', port=8081, debug=True)
+#run(host='0.0.0.0', port=argv[1])
+run(host='0.0.0.0', port=8081, debug=True)
