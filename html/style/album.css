@@ -2,6 +2,7 @@ body {
   background: url("images/fondoalbum.jpg") top center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
 }
 .div1 {
  text-align: center;

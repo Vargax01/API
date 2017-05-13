@@ -22,8 +22,3 @@ border-radius: 10px 10px 10px 10px;
 h4 {
 color: #81F7F3;
 }
-
-.itunes {
-margin-top: 60px;
-margin-left: 20px;
-}

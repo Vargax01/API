@@ -1,4 +1,14 @@
 body {
   background: url("images/fondocanciones.jpg") top center no-repeat;
   background-size: cover;
+  background-attachment: fixed;
+}
+.azul{
+color: #2E2EFE;
+}
+.gris {
+color: #04B431;
+}
+.div1 {
+ text-align: center;
 }

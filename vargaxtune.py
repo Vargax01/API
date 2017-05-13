@@ -23,35 +23,30 @@ def inicio2():
 
 @route('/album/<para1>')
 def album(para1):
-    payload={"term":para1,"media":"music","country":"ES","enity":"album"}
+    payload={"term":para1,"media":"music","country":"ES","entity":"album"}
     r=requests.get('https://itunes.apple.com/search',params=payload)
     js=json.loads(r.text)
     listacodigo=[]
-    for i in js["results"]:
-        if i["kind"] == "song" and i["collectionId"] not in listacodigo:
-            listacodigo.append(i["collectionId"])
     listalbum=[]
-    for album in listacodigo:
-        payload2={"id":album,"country":"ES"}
-        r1=requests.get('https://itunes.apple.com/lookup',params=payload2)
-        js1=json.loads(r1.text)
-        diccio={"album":js1["results"][0]["collectionName"],"imagen":js1["results"][0]["artworkUrl100"],"codigo":album,"artista":js1["results"][0]["artistName"]}
-        listalbum.append(diccio)
+    for album in js["results"]:
+        if album["collectionType"] == "Album" and album["collectionId"] not in listacodigo:
+            diccio={"album":album["collectionName"],"imagen":album["artworkUrl100"],"codigo":album["collectionId"],"artista":album["artistName"]}
+            listalbum.append(diccio)
     return template('html/albumes.tpl',listalbum=listalbum,album1=para1)
 
 @route('/canciones/<codigo>')
 def canciones(codigo):
-    payload={"id":codigo,"enity":"song","country":"ES"}
+    payload={"id":codigo,"entity":"song","country":"ES"}
     req=requests.get('https://itunes.apple.com/lookup',params=payload)
-    js=json.loads(req.text)
-    nomalbum=js["results"][0]["collectionName"]
-    img=js["results"][0]["artworkUrl100"]
+    js2=json.loads(req.text)
+    nomalbum=js2["results"][0]["collectionName"]
+    img=js2["results"][0]["artworkUrl100"]
     listacanc=[]
-    for cancion in js["results"]:
-        if cancion.get("kind") != None:
+    for cancion in js2["results"]:
+        if cancion.has_key("kind"):
             candiccio={"nombre":cancion["trackName"],"artista":cancion["artistName"],"media":cancion["previewUrl"]}
             listacanc.append(candiccio)
-    return template('html/canciones.tpl',nomalbum=nomalbum)
+    return template('html/canciones.tpl',nomalbum=nomalbum,img=img,listacanc=listacanc)
 
 @route('/artista/<para1>')
 def artista(para1):
