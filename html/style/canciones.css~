@@ -3,12 +3,28 @@ body {
   background-size: cover;
   background-attachment: fixed;
 }
+h1 {
+color: rgba(236,176,81,1);
+color: -moz-linear-gradient(left, rgba(236,176,81,1) 0%, rgba(226,219,110,1) 100%);
+color: -webkit-gradient(left top, right top, color-stop(0%, rgba(236,176,81,1)), color-stop(100%, rgba(226,219,110,1)));
+color: -webkit-linear-gradient(left, rgba(236,176,81,1) 0%, rgba(226,219,110,1) 100%);
+color: -o-linear-gradient(left, rgba(236,176,81,1) 0%, rgba(226,219,110,1) 100%);
+color: -ms-linear-gradient(left, rgba(236,176,81,1) 0%, rgba(226,219,110,1) 100%);
+color: linear-gradient(to right, rgba(236,176,81,1) 0%, rgba(226,219,110,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ecb051', endColorstr='#e2db6e', GradientType=1 );
+}
 .azul{
-color: #2E2EFE;
+color: #2E64FE;
 }
 .gris {
-color: #088A08;
+color: #0404B4;
 }
 .div1 {
  text-align: center;
+}
+
+audio {
+background: #00FFFF;
+width: 200px;
+height: 400px;
 }
