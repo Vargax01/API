@@ -44,9 +44,18 @@ def canciones(codigo):
     listacanc=[]
     for cancion in js2["results"]:
         if cancion.has_key("kind"):
-            candiccio={"nombre":cancion["trackName"],"artista":cancion["artistName"],"media":cancion["previewUrl"]}
+            candiccio={"codigo":cancion["trackId"],"nombre":cancion["trackName"],"artista":cancion["artistName"],"media":cancion["previewUrl"]}
             listacanc.append(candiccio)
     return template('html/canciones.tpl',nomalbum=nomalbum,img=img,listacanc=listacanc)
+
+@route('/correo/<codigocan>',method="get")
+def correo(codigocan):
+    return template('html/correo.tpl',codigocan=codigocan)
+
+@route('/correo/<codigocan>',method="post")
+def correo2(codigocan):
+    correo=str(request.forms.get('correo'))
+    return """<h1>%s para %s</h1>"""%(codigocan,correo)
 
 @route('/artista/<para1>')
 def artista(para1):
@@ -64,5 +73,5 @@ def error():
 def server_static(filepath):
     return static_file(filepath,root='html/style')
 
-run(host='0.0.0.0', port=argv[1])
-#run(host='0.0.0.0', port=8081, debug=True)
+#run(host='0.0.0.0', port=argv[1])
+run(host='0.0.0.0', port=8081, debug=True)

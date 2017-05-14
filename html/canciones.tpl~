@@ -14,7 +14,7 @@
  </div>
 <table>
 <tr>
-	<th><h2 class="azul">Cancion</h2></th>
+	<th><h2 class="gris">Cancion</h2></th>
 	<th></th>
 	<th></th>	
 	<th></th>
@@ -100,7 +100,8 @@
 	<th></th>	
 	<th></th>
 	<th><audio src={{cancion["media"]}} controls></audio></th>
-	</tr>
+	<th><a title="{{cancion["codigo"]}}" href="/credenciales/{{cancion["codigo"]}}"><img src="/style/images/like1.png" /></a></th>
+	</tr>	
 	<br>
 % end
 </table>
