@@ -3,6 +3,9 @@ from bottle import route, run, request, template, static_file, redirect
 import requests
 from sys import argv
 import json
+import sendgrid
+import os
+from sendgrid.helpers.mail import *
 @route('/inicio',method="get")
 @route('/')
 def inicio():
@@ -55,7 +58,13 @@ def correo(codigocan):
 @route('/correo/<codigocan>',method="post")
 def correo2(codigocan):
     correo=str(request.forms.get('correo'))
-    return """<h1>%s para %s</h1>"""%(codigocan,correo)
+    sg = sendgrid.SendGridAPIClient(apikey=os.environ.get('SENDGRID_API_KEY'))
+    from_email = Email("miguelchico14@gmail.com")
+    subject = "Hello World from the SendGrid Python Library!"
+    to_email = Email(correo)
+    content = Content("text/plain", "Hello, Email!")
+    mail = Mail(from_email, subject, to_email, content)
+    response = sg.client.mail.send.post(request_body=mail.get())
 
 @route('/artista/<para1>')
 def artista(para1):
@@ -73,5 +82,5 @@ def error():
 def server_static(filepath):
     return static_file(filepath,root='html/style')
 
-#run(host='0.0.0.0', port=argv[1])
-run(host='0.0.0.0', port=8081, debug=True)
+run(host='0.0.0.0', port=argv[1])
+#run(host='0.0.0.0', port=8081, debug=True)
