@@ -84,7 +84,7 @@ def canciones(codigo):
             listacanc.append(candiccio)
     return template('html/canciones.tpl',nomalbum=nomalbum,img=img,listacanc=listacanc)
 
-@route('/correo/<codigocan>',method="get")
+@get('/correo/<codigocan>',method="get")
 def correo(codigocan):
     get_request_token()
     authorize_url = AUTHENTICATE_URL + TOKENS["request_token"]
