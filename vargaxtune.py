@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from bottle import route, run, request, template, static_file, redirect
+from bottle import route, run, request, template, static_file, redirect, get
 import requests
 from requests_oauthlib import OAuth1
 from urlparse import parse_qs
