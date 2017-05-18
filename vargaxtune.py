@@ -102,7 +102,7 @@ def correo2(codigocan):
     album=js["results"][0]["collectionName"]
     artista=js["results"][0]["artistName"]
     imagen=js["results"][0]["artworkUrl100"]
-    sg = sendgrid.SendGridAPIClient(apikey=os.environ('SENDGRID_API_KEY')
+    sg = sendgrid.SendGridAPIClient(apikey=os.environ('SENDGRID_API_KEY'))
     from_email = Email("miguelchico14@gmail.com")
     subject = "Cancion que me ha gustado desde VargaxTune"
     to_email = Email(correo)
