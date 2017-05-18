@@ -28,15 +28,15 @@ def get_request_token():
     TOKENS["request_token_secret"] = credentials.get('oauth_token_secret')[0]
 
 def get_access_token(TOKENS):
-  oauth = OAuth1(CONSUMER_KEY,
+    oauth = OAuth1(CONSUMER_KEY,
                    client_secret=CONSUMER_SECRET,
                    resource_owner_key=TOKENS["request_token"],
                    resource_owner_secret=TOKENS["request_token_secret"],
                    verifier=TOKENS["verifier"],)
-  r = requests.post(url=ACCESS_TOKEN_URL, auth=oauth)
-  credentials = parse_qs(r.content)
-  TOKENS["access_token"] = credentials.get('oauth_token')[0]
-  TOKENS["access_token_secret"] = credentials.get('oauth_token_secret')[0]
+    r = requests.post(url=ACCESS_TOKEN_URL, auth=oauth)
+    credentials = parse_qs(r.content)
+    TOKENS["access_token"] = credentials.get('oauth_token')[0]
+    TOKENS["access_token_secret"] = credentials.get('oauth_token_secret')[0]
 
 
 @route('/inicio',method="get")
