@@ -18,5 +18,13 @@ padding: 20px;
 
 .enviar {
 margin-top: 20px;
-margin-left: 1500px;
+margin-left: 800px;
+}
+
+.centro {
+text-align: center;
+color: black;
+}
+.twitter {
+margin-left: 800px;
 }

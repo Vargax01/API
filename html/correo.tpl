@@ -14,12 +14,16 @@
 <h1>Almacene sus canciones favoritas en su correo</h1></th>
 </tr>
 <tr>
-<th><h2>Escribe tu correo: </h2></th>
-<th><input type="text" name="correo" /></th>
+<th><h2>Escribe tu correo: </h2>
+<input type="text" name="correo" /></th>
+</tr>
+<tr>
+<th><img src="/style/images/gmail1.png"></th>
 </tr>
 </table>
 <input type="submit" name="enviar" value="Enviar Correo" class="enviar" />
 </form>
-<h2>Compartir via twitter</h2>
+<a title="Twitter" href=""><h2 class="centro">Compartir via twitter</h2></a><br>
+<img src="/style/images/twitter1.png" class="twitter">
 </body>
 </html>
