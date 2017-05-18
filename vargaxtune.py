@@ -123,7 +123,6 @@ def get_verifier():
 
 @get('/twittear')
 def twittear():
-    if request.get_cookie("access_token", secret='some-secret-key'):
       TOKENS["access_token"]=request.get_cookie("access_token", secret='some-secret-key')
       TOKENS["access_token_secret"]=request.get_cookie("access_token_secret", secret='some-secret-key')
       print CONSUMER_KEY
@@ -142,8 +141,6 @@ def twittear():
         return "<p>Tweet properly sent</p>"
       else:
         return "<p>Unable to send tweet</p>"
-    else:
-      redirect('/inicio')
 
 @get('/twitter_logout')
 def twitter_logout():
