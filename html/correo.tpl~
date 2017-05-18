@@ -24,6 +24,6 @@
 <input type="submit" name="enviar" value="Enviar Correo" class="enviar" />
 </form>
 <a title="Twitter" href=""><h2 class="centro">Compartir via twitter</h2></a><br>
-<img src="/style/images/twitter1.png" class="centro">
+<img src="/style/images/twitter1.png" class="twitter">
 </body>
 </html>
