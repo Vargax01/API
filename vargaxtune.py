@@ -111,7 +111,7 @@ def correo2(codigocan):
     response = sg.client.mail.send.post(request_body=mail.get())
     return template('html/correoenviado.tpl')
 
-@get('/callback')
+@route('/callback')
 def get_verifier():
   TOKENS["request_token"]=request.get_cookie("request_token", secret='some-secret-key')
   TOKENS["request_token_secret"]=request.get_cookie("request_token_secret", secret='some-secret-key')
@@ -121,8 +121,9 @@ def get_verifier():
   response.set_cookie("access_token_secret", TOKENS["access_token_secret"],secret='some-secret-key')
   redirect('/twittear')
 
-@get('/twittear')
+@route('/twittear')
 def twittear():
+    if request.get_cookie("access_token", secret='some-secret-key'):
       TOKENS["access_token"]=request.get_cookie("access_token", secret='some-secret-key')
       TOKENS["access_token_secret"]=request.get_cookie("access_token_secret", secret='some-secret-key')
       print CONSUMER_KEY
@@ -141,6 +142,8 @@ def twittear():
         return "<p>Tweet properly sent</p>"
       else:
         return "<p>Unable to send tweet</p>"
+    else:
+      redirect('/inicio')
 
 @get('/twitter_logout')
 def twitter_logout():
