@@ -36,7 +36,7 @@ def get_access_token(TOKENS):
   r = requests.post(url=ACCESS_TOKEN_URL, auth=oauth)
   credentials = parse_qs(r.content)
   TOKENS["access_token"] = credentials.get('oauth_token')[0]
-  TOKENS["access_token_secret"] = credentials.get('oauth_token_secret')[0]
+  TOKENS["access_token_secret"] = credentials.get('oauth_verifier')[0]
 
 
 @route('/inicio',method="get")
@@ -111,7 +111,7 @@ def correo2(codigocan):
     response = sg.client.mail.send.post(request_body=mail.get())
     return template('html/correoenviado.tpl')
 
-@route('/callback')
+@get('/callback')
 def get_verifier():
   TOKENS["request_token"]=request.get_cookie("request_token", secret='some-secret-key')
   TOKENS["request_token_secret"]=request.get_cookie("request_token_secret", secret='some-secret-key')
@@ -121,7 +121,7 @@ def get_verifier():
   response.set_cookie("access_token_secret", TOKENS["access_token_secret"],secret='some-secret-key')
   redirect('/twittear')
 
-@route('/twittear')
+@get('/twittear')
 def twittear():
     if request.get_cookie("access_token", secret='some-secret-key'):
       TOKENS["access_token"]=request.get_cookie("access_token", secret='some-secret-key')
