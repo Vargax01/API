@@ -93,7 +93,7 @@ def canciones(codigo):
 
 @get('/correo/<codigocan>',method="get")
 def correo(codigocan):
-    if cancion.has_key("verifier"):
+    if TOKENS.has_key("verifier"):
         return template('html/correo.tpl',codigocan=codigocan)
     else:
         return """<h1>Algo Ocurrió</h1>"""
