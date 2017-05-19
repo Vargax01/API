@@ -18,6 +18,7 @@ CONSUMER_SECRET = "jHgZn8qW6QFJXYCjFZcX2fIsVkdkjl1NExRfKGX3mtrHNHqKE5"
 
 TOKENS = {}
 
+codigo=' '
 def get_request_token():
     oauth = OAuth1(CONSUMER_KEY,
                    client_secret=CONSUMER_SECRET,
@@ -87,6 +88,7 @@ def canciones(codigo):
 
 @get('/correo/<codigocan>',method="get")
 def correo(codigocan):
+    codigo=codigocan
     get_request_token()
     authorize_url = AUTHENTICATE_URL + TOKENS["request_token"]
     response.set_cookie("request_token", TOKENS["request_token"],secret='some-secret-key')
@@ -136,7 +138,7 @@ def twittear():
                        resource_owner_secret=TOKENS["access_token_secret"])
       url = 'https://api.twitter.com/1.1/statuses/update.json'
       r = requests.post(url=url,
-                          data={"status":"prueba de oauth1"},
+                          data={"status":"Me ha gustado la cancion con codigo %s"%(codigo)},
                           auth=oauth)
       if r.status_code == 200:
         return "<p>Tweet properly sent</p>"
