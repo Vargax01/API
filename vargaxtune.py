@@ -114,10 +114,10 @@ def correo2(codigocan):
 
 @get('/callback')
 def get_verifier():
+    print TOKENS
     TOKENS["request_token"]=request.get_cookie("request_token", secret='some-secret-key')
     TOKENS["request_token_secret"]=request.get_cookie("request_token_secret", secret='some-secret-key')
     TOKENS["verifier"] = request.query.oauth_verifier
-    print TOKENS
     get_access_token(TOKENS)
     response.set_cookie("access_token", TOKENS["access_token"],secret='some-secret-key')
     response.set_cookie("access_token_secret", TOKENS["access_token_secret"],secret='some-secret-key')
