@@ -41,6 +41,7 @@
 <th></th>
 </tr>
 </table>
+<a href="{{authorize_url}}"><h3>Conectar Con Twitter</h3></a>
 <input type="submit" name="buscar" value="Buscar" class="buscar" />
 </form>
 </div>

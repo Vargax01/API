@@ -9,6 +9,7 @@ import sendgrid
 import os
 from sendgrid.helpers.mail import *
 
+
 REQUEST_TOKEN_URL = "https://api.twitter.com/oauth/request_token"
 AUTHENTICATE_URL = "https://api.twitter.com/oauth/authenticate?oauth_token="
 ACCESS_TOKEN_URL = "https://api.twitter.com/oauth/access_token"
@@ -18,7 +19,6 @@ CONSUMER_SECRET = "jHgZn8qW6QFJXYCjFZcX2fIsVkdkjl1NExRfKGX3mtrHNHqKE5"
 
 TOKENS = {}
 
-codigo=' '
 def get_request_token():
     oauth = OAuth1(CONSUMER_KEY,
                    client_secret=CONSUMER_SECRET,
@@ -44,7 +44,11 @@ def get_access_token(TOKENS):
 @route('/inicio',method="get")
 @route('/')
 def inicio():
-    return template('html/inicio.tpl')
+    get_request_token()
+    authorize_url = AUTHENTICATE_URL + TOKENS["request_token"]
+    response.set_cookie("request_token", TOKENS["request_token"],secret='some-secret-key')
+    response.set_cookie("request_token_secret", TOKENS["request_token_secret"],secret='some-secret-key')
+    return template('html/inicio.tpl',authorize_url=authorize_url)
 
 @route('/inicio',method="post")
 def inicio2():
@@ -86,14 +90,13 @@ def canciones(codigo):
             listacanc.append(candiccio)
     return template('html/canciones.tpl',nomalbum=nomalbum,img=img,listacanc=listacanc)
 
+
 @get('/correo/<codigocan>',method="get")
 def correo(codigocan):
-    codigo=codigocan
-    get_request_token()
-    authorize_url = AUTHENTICATE_URL + TOKENS["request_token"]
-    response.set_cookie("request_token", TOKENS["request_token"],secret='some-secret-key')
-    response.set_cookie("request_token_secret", TOKENS["request_token_secret"],secret='some-secret-key')
-    return template('html/correo.tpl',codigocan=codigocan,authorize_url=authorize_url)
+    if cancion.has_key("verifier"):
+        return template('html/correo.tpl',codigocan=codigocan)
+    else:
+        return """<h1>Algo Ocurrió</h1>"""
 
 @route('/correo/<codigocan>',method="post")
 def correo2(codigocan):
@@ -121,10 +124,10 @@ def get_verifier():
     get_access_token(TOKENS)
     response.set_cookie("access_token", TOKENS["access_token"],secret='some-secret-key')
     response.set_cookie("access_token_secret", TOKENS["access_token_secret"],secret='some-secret-key')
-    redirect('/twittear')
+    redirect('/inicio')
 
 @get('/twittear')
-def twittear():
+def twittear(codigo):
     if request.get_cookie("access_token", secret='some-secret-key'):
       TOKENS["access_token"]=request.get_cookie("access_token", secret='some-secret-key')
       TOKENS["access_token_secret"]=request.get_cookie("access_token_secret", secret='some-secret-key')

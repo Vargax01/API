@@ -23,7 +23,7 @@
 </table>
 <input type="submit" name="enviar" value="Enviar Correo" class="enviar" />
 </form>
-<a title="Twitter" href="{{authorize_url}}"><h2 class="centro">Compartir via twitter</h2></a><br>
+<a title="Twitter" href="/twittear"><h2 class="centro">Compartir via twitter</h2></a><br>
 <img src="/style/images/twitter1.png" class="twitter">
 </body>
 </html>
