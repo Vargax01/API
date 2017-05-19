@@ -28,11 +28,11 @@ def get_request_token():
     TOKENS["request_token_secret"] = credentials.get('oauth_token_secret')[0]
 
 def get_access_token(TOKENS):
+    print TOKENS
     oauth = OAuth1(CONSUMER_KEY,
                    client_secret=CONSUMER_SECRET,
                    resource_owner_key=TOKENS["request_token"],
-                   resource_owner_secret=TOKENS["request_token_secret"],
-                   verifier=TOKENS["verifier"],)
+                   resource_owner_secret=TOKENS["request_token_secret"])
     r = requests.post(url=ACCESS_TOKEN_URL, auth=oauth)
     credentials = parse_qs(r.content)
     print credentials
@@ -91,7 +91,6 @@ def correo(codigocan):
     authorize_url = AUTHENTICATE_URL + TOKENS["request_token"]
     response.set_cookie("request_token", TOKENS["request_token"],secret='some-secret-key')
     response.set_cookie("request_token_secret", TOKENS["request_token_secret"],secret='some-secret-key')
-    print TOKENS
     return template('html/correo.tpl',codigocan=codigocan,authorize_url=authorize_url)
 
 @route('/correo/<codigocan>',method="post")
