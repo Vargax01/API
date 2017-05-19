@@ -93,10 +93,7 @@ def canciones(codigo):
 
 @get('/correo/<codigocan>',method="get")
 def correo(codigocan):
-    if TOKENS.has_key("verifier"):
-        return template('html/correo.tpl',codigocan=codigocan)
-    else:
-        return """<h1>Algo Ocurrió</h1>"""
+    return template('html/correo.tpl',codigocan=codigocan)
 
 @route('/correo/<codigocan>',method="post")
 def correo2(codigocan):
@@ -127,7 +124,7 @@ def get_verifier():
     redirect('/inicio')
 
 @get('/twittear')
-def twittear(codigo):
+def twittear():
     if request.get_cookie("access_token", secret='some-secret-key'):
       TOKENS["access_token"]=request.get_cookie("access_token", secret='some-secret-key')
       TOKENS["access_token_secret"]=request.get_cookie("access_token_secret", secret='some-secret-key')
