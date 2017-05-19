@@ -48,7 +48,7 @@ def inicio():
     authorize_url = AUTHENTICATE_URL + TOKENS["request_token"]
     response.set_cookie("request_token", TOKENS["request_token"],secret='some-secret-key')
     response.set_cookie("request_token_secret", TOKENS["request_token_secret"],secret='some-secret-key')
-    return template('html/inicio.tpl',authorize_url=authorize_url)
+    return template('html/inicio.tpl',authorize_url=authorize_url,TOKENS=TOKENS)
 
 @route('/inicio',method="post")
 def inicio2():
