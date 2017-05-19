@@ -112,7 +112,7 @@ def correo2(codigocan):
     content = Content("text/html","""<html><body><img src='http://apivargax.herokuapp.com/style/images/vargaxtunepeque.png' /><br><h1>Me ha gustado la cancion %s</h1><br><h2>Album: %s</h2><br><h2>Artista: %s</h2><br><img src=%s /></body></html>"""%(cancion,album,artista,imagen))
     mail = Mail(from_email, subject, to_email, content)
     response = sg.client.mail.send.post(request_body=mail.get())
-    return template('html/correoenviado.tpl')
+    return template('html/correoenviado.tpl',TOKENS=TOKENS)
 
 @get('/callback')
 def get_verifier():
@@ -125,6 +125,11 @@ def get_verifier():
 
 @get('/twittear/<codigo>')
 def twittear(codigo):
+    payload={"id":codigo,"country":"ES"}
+    req=requests.get('https://itunes.apple.com/lookup',params=payload)
+    js=json.loads(req.text)
+    cancion=js["results"][0]["trackName"]
+    artista=js["results"][0]["artistName"]
     if request.get_cookie("access_token", secret='some-secret-key'):
       TOKENS["access_token"]=request.get_cookie("access_token", secret='some-secret-key')
       TOKENS["access_token_secret"]=request.get_cookie("access_token_secret", secret='some-secret-key')
@@ -138,12 +143,13 @@ def twittear(codigo):
                        resource_owner_secret=TOKENS["access_token_secret"])
       url = 'https://api.twitter.com/1.1/statuses/update.json'
       r = requests.post(url=url,
-                          data={"status":"Me ha gustado la cancion con codigo %s"%(codigo)},
+                          data={"status":"Me ha gustado la cancion %s de %s"%(cancion,artista)},
                           auth=oauth)
       if r.status_code == 200:
-        return "<p>Tweet properly sent</p>"
+        return "<p>Tweet enviado correctamente</p>"
+        redirect('/correo')
       else:
-        return "<p>Unable to send tweet</p>"
+        return "<p>Tu tweet no pudo ser enviado algo pasó</p>"
     else:
       redirect('/inicio')
 

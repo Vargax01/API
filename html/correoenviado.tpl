@@ -8,7 +8,9 @@
 <a title="VargaxTune" href="/inicio"><img src="/style/images/vargaxtunepeque.png" /></a>
 <img src="/style/images/itunespeque.png"><br>
 <h1 class="centro">Correo Enviado</h1>
-<a title="Twitter" href=""><h2 class="centro">Compartir via twitter</h2></a><br>
+% if TOKENS.has_key("verifier"):
+<a title="Twitter" href="/twittear/{{codigocan}}"><h2 class="centro">Compartir via twitter</h2></a><br>
 <img src="/style/images/twitter1.png" class="twitter">
+% end
 </body>
 </html>
