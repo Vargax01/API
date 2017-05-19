@@ -10,7 +10,7 @@ import os
 from sendgrid.helpers.mail import *
 
 REQUEST_TOKEN_URL = "https://api.twitter.com/oauth/request_token"
-AUTHENTICATE_URL = "https://api.twitter.com/oauth/authorize"
+AUTHENTICATE_URL = "https://api.twitter.com/oauth/authenticate?oauth_token="
 ACCESS_TOKEN_URL = "https://api.twitter.com/oauth/access_token"
 
 CONSUMER_KEY = "5lWOSvU6M66CrZTkOGTZJ0W8B"
