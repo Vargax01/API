@@ -41,13 +41,14 @@
 <th></th>
 </tr>
 </table>
+<input type="submit" name="buscar" value="Buscar" class="buscar" />
+</form>
 % if TOKENS.has_key("verifier"):
-	<h2>Conectado con twitter</h2>
+	<h2>Conectado con twitter</h2><br>
+	<a href="/twitter_logout"><h3>Desconectar</h3></a>
 % else:
 	<a href="{{authorize_url}}"><h3>Conectar Con Twitter</h3></a>
 % end
-<input type="submit" name="buscar" value="Buscar" class="buscar" />
-</form>
 </div>
 </body>
 </html>
