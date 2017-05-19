@@ -44,7 +44,7 @@
 <input type="submit" name="buscar" value="Buscar" class="buscar" />
 </form>
 % if TOKENS.has_key("verifier"):
-	<h2>Conectado con twitter</h2>
+	<h2>Conectado con</h2><img src="style/images/logotw1.png" />
 % else:
 	<a href="{{authorize_url}}"><h3>Conectar Con Twitter</h3></a>
 % end
