@@ -25,7 +25,7 @@
 </form>
 % if TOKENS.has_key("verifier"):
 <a title="Twitter" href="/twittear/{{codigocan}}"><h2 class="centro">Compartir via twitter</h2></a><br>
-% end
 <img src="/style/images/twitter1.png" class="twitter">
+% end
 </body>
 </html>
