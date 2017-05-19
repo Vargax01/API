@@ -123,8 +123,8 @@ def get_verifier():
     response.set_cookie("access_token_secret", TOKENS["access_token_secret"],secret='some-secret-key')
     redirect('/inicio')
 
-@get('/twittear')
-def twittear():
+@get('/twittear/<codigo>')
+def twittear(codigo):
     if request.get_cookie("access_token", secret='some-secret-key'):
       TOKENS["access_token"]=request.get_cookie("access_token", secret='some-secret-key')
       TOKENS["access_token_secret"]=request.get_cookie("access_token_secret", secret='some-secret-key')
@@ -138,7 +138,7 @@ def twittear():
                        resource_owner_secret=TOKENS["access_token_secret"])
       url = 'https://api.twitter.com/1.1/statuses/update.json'
       r = requests.post(url=url,
-                          data={"status":"Me ha gustado la cancion con codigo "},
+                          data={"status":"Me ha gustado la cancion con codigo %s"%(codigo)},
                           auth=oauth)
       if r.status_code == 200:
         return "<p>Tweet properly sent</p>"
