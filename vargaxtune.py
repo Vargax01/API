@@ -10,7 +10,7 @@ import os
 from sendgrid.helpers.mail import *
 
 REQUEST_TOKEN_URL = "https://api.twitter.com/oauth/request_token"
-AUTHENTICATE_URL = "https://api.twitter.com/oauth/authenticate?oauth_token="
+AUTHENTICATE_URL = "https://api.twitter.com/oauth/authorize"
 ACCESS_TOKEN_URL = "https://api.twitter.com/oauth/access_token"
 
 CONSUMER_KEY = "5lWOSvU6M66CrZTkOGTZJ0W8B"
@@ -119,7 +119,7 @@ def get_verifier():
   get_access_token(TOKENS)
   response.set_cookie("access_token", TOKENS["access_token"],secret='some-secret-key')
   response.set_cookie("access_token_secret", TOKENS["access_token_secret"],secret='some-secret-key')
-  redirect('/inicio')
+  redirect('/twittear')
 
 @get('/twittear')
 def twittear():
