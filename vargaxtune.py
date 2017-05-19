@@ -90,6 +90,7 @@ def correo(codigocan):
     authorize_url = AUTHENTICATE_URL + TOKENS["request_token"]
     response.set_cookie("request_token", TOKENS["request_token"],secret='some-secret-key')
     response.set_cookie("request_token_secret", TOKENS["request_token_secret"],secret='some-secret-key')
+    print TOKENS
     return template('html/correo.tpl',codigocan=codigocan,authorize_url=authorize_url)
 
 @route('/correo/<codigocan>',method="post")
