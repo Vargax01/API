@@ -93,7 +93,7 @@ def canciones(codigo):
 
 @get('/correo/<codigocan>',method="get")
 def correo(codigocan):
-    return template('html/correo.tpl',codigocan=codigocan)
+    return template('html/correo.tpl',codigocan=codigocan,TOKENS=TOKENS)
 
 @route('/correo/<codigocan>',method="post")
 def correo2(codigocan):
