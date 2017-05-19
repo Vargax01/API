@@ -146,10 +146,11 @@ def twittear(codigo):
                           data={"status":"Me ha gustado la cancion %s de %s"%(cancion,artista)},
                           auth=oauth)
       if r.status_code == 200:
-        return "<p>Tweet enviado correctamente</p>"
-        redirect('/correo')
+        return """<h2>Tweet Enviado Corrrectamente</h2>
+                    <br><a href='/correo'><h3>Volver Atras</h3></a>"""
       else:
-        return "<p>Tu tweet no pudo ser enviado algo pasó</p>"
+        return """<h2>Tu Tweet no fue enviado algo pasó</h2>
+                    <br><a href='/correo'><h3>Volver Atras</h3></a>"""
     else:
       redirect('/inicio')
 
