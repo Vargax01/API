@@ -23,9 +23,8 @@
 </table>
 <input type="submit" name="enviar" value="Enviar Correo" class="enviar" />
 </form>
-% if TOKENS.has_key("verifier"):
-<a title="Twitter" href="/twittear/{{codigocan}}"><h2 class="centro">Compartir via twitter</h2></a><br>
-<img src="/style/images/twitter1.png" class="twitter">
+% if cont == 1:
+	<a href="/twittear/{{codigocan}}"><h3>Compartir en Twitter</h3></a>
 % end
 </body>
 </html>

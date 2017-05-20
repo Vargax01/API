@@ -44,11 +44,16 @@ def get_access_token(TOKENS):
 @route('/inicio',method="get")
 @route('/')
 def inicio():
+    cont=0
     get_request_token()
     authorize_url = AUTHENTICATE_URL + TOKENS["request_token"]
     response.set_cookie("request_token", TOKENS["request_token"],secret='some-secret-key')
     response.set_cookie("request_token_secret", TOKENS["request_token_secret"],secret='some-secret-key')
-    return template('html/inicio.tpl',authorize_url=authorize_url,TOKENS=TOKENS)
+    if request.get_cookie("access_token", secret='some-secret-key'):
+        cont=1
+    else:
+        cont=0
+    return template('html/inicio.tpl',authorize_url=authorize_url,cont=cont)
 
 @route('/inicio',method="post")
 def inicio2():
@@ -93,7 +98,12 @@ def canciones(codigo):
 
 @get('/correo/<codigocan>',method="get")
 def correo(codigocan):
-    return template('html/correo.tpl',codigocan=codigocan,TOKENS=TOKENS)
+    cont=0
+    if request.get_cookie("access_token", secret='some-secret-key'):
+        cont=1
+    else:
+        cont=0
+    return template('html/correo.tpl',codigocan=codigocan,TOKENS=TOKENS,cont=cont)
 
 @route('/correo/<codigocan>',method="post")
 def correo2(codigocan):
