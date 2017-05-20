@@ -45,7 +45,7 @@
 </form>
 % if cont == 1:
 	<h3>Conectado con</h3>
-	<img src="logotw1.png" />
+	<img src="style/images/logotw1.png" />
 % else:
 	<a href="{{authorize_url}}"><h3>Conectar con Twitter</h3></a>
 % end

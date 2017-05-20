@@ -24,7 +24,8 @@
 <input type="submit" name="enviar" value="Enviar Correo" class="enviar" />
 </form>
 % if cont == 1:
-	<a href="/twittear/{{codigocan}}"><h3>Compartir en Twitter</h3></a>
+	<a href="/twittear/{{codigocan}}"><h3 class="centro">Compartir en Twitter</h3></a>
+	<img src="/style/images/twitter1.png" class="twitter">
 % end
 </body>
 </html>
