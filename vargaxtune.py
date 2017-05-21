@@ -157,10 +157,10 @@ def twittear(codigo):
                           auth=oauth)
       if r.status_code == 200:
         return """<h2>Tweet Enviado Corrrectamente</h2>
-                    <br><a href='/correo'><h3>Volver Atras</h3></a>"""
+                    <br><a href='/correo/%s'><h3>Volver Atras</h3></a>"""%(codigo)
       else:
         return """<h2>Tu Tweet no fue enviado algo pasó</h2>
-                    <br><a href='/correo'><h3>Volver Atras</h3></a>"""
+                    <br><a href='/correo/%s'><h3>Volver Atras</h3></a>"""%(codigo)
     else:
       redirect('/inicio')
 
