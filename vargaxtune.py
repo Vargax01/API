@@ -14,8 +14,8 @@ REQUEST_TOKEN_URL = "https://api.twitter.com/oauth/request_token"
 AUTHENTICATE_URL = "https://api.twitter.com/oauth/authenticate?oauth_token="
 ACCESS_TOKEN_URL = "https://api.twitter.com/oauth/access_token"
 
-CONSUMER_KEY = "5lWOSvU6M66CrZTkOGTZJ0W8B"
-CONSUMER_SECRET = "jHgZn8qW6QFJXYCjFZcX2fIsVkdkjl1NExRfKGX3mtrHNHqKE5"
+CONSUMER_KEY = os.environ.get('consumer_key')
+CONSUMER_SECRET = os.environ.get('consumer_secret')
 
 TOKENS = {}
 
