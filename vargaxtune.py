@@ -188,7 +188,7 @@ def albumartista(codigoart):
     js2=json.loads(req.text)
     listalbum=[]
     nomartista=js2["results"][0]["artistName"]
-    for album in js["results"]:
+    for album in js2["results"]:
             diccio={"album":album["collectionName"],"imagen":album["artworkUrl100"],"codigo":album["collectionId"],"artista":album["artistName"]}
             listalbum.append(diccio)
     return template('html/albumartista.tpl',listalbum=listalbum,nomartista=nomartista)
