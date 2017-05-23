@@ -9,7 +9,6 @@
 <img src="/style/images/itunespeque.png">
 % cont=0
 <table>
-<form id="albumes" action="album" method="post">
 % for album in listalbum:
 	% if cont == 8:
 	   <tr>
@@ -26,7 +25,6 @@
 	% end
 % cont=cont+1
 % end
-</form>
 </table>
 </body>
 </html>

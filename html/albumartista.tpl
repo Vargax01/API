@@ -2,14 +2,13 @@
 <html lang="es">
 <head>
 <link rel="stylesheet" type="text/css" href="/style/album.css" />
-<title>Albumes {{album1}}</title>
+<title>Albumes de {{nomartista}}</title>
 </head>
 <body>
 <a title="VargaxTune" href="/inicio"><img src="/style/images/vargaxtunepeque.png" /></a>
 <img src="/style/images/itunespeque.png">
 % cont=0
 <table>
-<form id="albumes" action="album" method="post">
 % for album in listalbum:
 	% if cont == 8:
 	   <tr>
@@ -26,7 +25,6 @@
 	% end
 % cont=cont+1
 % end
-</form>
 </table>
 </body>
 </html>

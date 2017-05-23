@@ -1,0 +1,13 @@
+body {
+  background: url("images/fondoartista.jpg") top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.div1 {
+ text-align: center;
+}
+
+h4 {
+color: #81F7F3;
+}

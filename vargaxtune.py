@@ -172,7 +172,26 @@ def twitter_logout():
 
 @route('/artista/<para1>')
 def artista(para1):
-    return """<h1>Has elegido categoria artista con artista: %s</h1>"""%(para1)
+    payload={"term":para1,"media":"music","country":"ES","entity":"musicArtist"}
+    r=requests.get('https://itunes.apple.com/search',params=payload)
+    js=json.loads(r.text)
+    listartista=[]
+    for artista in js["results"]:
+        diccio={"artista":artista["artistName"],"codigo":artista["artistId"]}
+        listartista.append(diccio)
+    return template('html/artista.tpl',listartista=listartista,para1=para1)
+
+@route('/albumartista/<codigoart>')
+def albumartista(codigoart):
+    payload={"id":codigoart,"entity":"album","country":"ES"}
+    req=requests.get('https://itunes.apple.com/lookup',params=payload)
+    js2=json.loads(req.text)
+    listalbum=[]
+    nomartista=js2["results"][0]["artistName"]
+    for album in js["results"]:
+            diccio={"album":album["collectionName"],"imagen":album["artworkUrl100"],"codigo":album["collectionId"],"artista":album["artistName"]}
+            listalbum.append(diccio)
+    return template('html/albumartista.tpl',listalbum=listalbum,nomartista=nomartista)
 
 @route('/music/<para1>')
 def music(para1):
