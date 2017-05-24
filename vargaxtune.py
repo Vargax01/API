@@ -189,6 +189,7 @@ def albumartista(codigoart):
     listalbum=[]
     nomartista=js2["results"][0]["artistName"]
     for album in js2["results"]:
+        if album["wrapperType"] == "collection":
             diccio={"album":album["collectionName"],"imagen":album["artworkUrl100"],"codigo":album["collectionId"],"artista":album["artistName"]}
             listalbum.append(diccio)
     return template('html/albumartista.tpl',listalbum=listalbum,nomartista=nomartista)
