@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<link rel="icon" type="image/png" href="/images/logovxt.png" />
 <link rel="stylesheet" type="text/css" href="/style/album.css" />
 <title>Albumes {{album1}}</title>
 </head>

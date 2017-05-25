@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<link rel="icon" type="image/png" href="/images/logovxt.png" />
+<link rel="icon" type="image/png" href="/style/images/logovxt.png" />
 <link rel="stylesheet" type="text/css" href="/style/artista.css" />
 <title>Artista {{para1}}</title>
 </head>
