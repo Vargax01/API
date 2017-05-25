@@ -199,8 +199,14 @@ def albumartista(codigoart):
 
 @route('/music/<para1>')
 def music(para1):
-    return """<h1>Has elegido categoria musica con musica: %s</h1>"""%(para1)
-
+    payload={"term":para1,"media":"music","country":"ES","entity":"song"}
+    r=requests.get('https://itunes.apple.com/search',params=payload)
+    js=json.loads(r.text)
+    listacan=[]
+    for music in js["results"]:
+        candiccio={"codigo":music["trackId"],"nombre":music["trackName"],"artista":music["artistName"],"media":music["previewUrl"],"imagen":music["artworkUrl60"]}
+        listacan.append(candiccio)
+    return template('html/music.tpl',listacan=listacan,para1=para1)
 @route('/error')
 def error():
     return """<h1>Categoría no Válida</h1>"""
