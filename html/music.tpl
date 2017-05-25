@@ -55,7 +55,7 @@
 	</tr>
 % for cancion in listacan:	
    <tr>
-   <th><img src={{cancion["imagen"]}} /></th>
+   <th><a href="/canciones/{{cancion["codigoal"]}}"><img src={{cancion["imagen"]}} /></a></th>
 	<th><h3 class="azul"><b>{{cancion["nombre"]}}</b></h3></th>
 	<th></th>
 	<th></th>	

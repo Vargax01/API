@@ -204,7 +204,7 @@ def music(para1):
     js=json.loads(r.text)
     listacan=[]
     for music in js["results"]:
-        candiccio={"codigo":music["trackId"],"nombre":music["trackName"],"artista":music["artistName"],"media":music["previewUrl"],"imagen":music["artworkUrl60"]}
+        candiccio={"codigo":music["trackId"],"nombre":music["trackName"],"artista":music["artistName"],"media":music["previewUrl"],"imagen":music["artworkUrl60"],"codigoal":music["collectionId"]}
         listacan.append(candiccio)
     return template('html/music.tpl',listacan=listacan,para1=para1)
 @route('/error')
