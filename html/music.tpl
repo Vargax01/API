@@ -9,6 +9,7 @@
 <img src="/style/images/itunespeque.png"><br>
 <table>
 <tr>
+	<th></th>
 	<th><h2 class="gris">Cancion</h2></th>
 	<th></th>
 	<th></th>	
