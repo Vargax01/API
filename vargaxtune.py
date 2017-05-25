@@ -120,7 +120,7 @@ def correo2(codigocan):
     from_email = Email("miguelchico14@gmail.com")
     subject = "Cancion que me ha gustado desde VargaxTune"
     to_email = Email(correo)
-    content = Content("text/html","""<html><body><img src='http://apivargax.herokuapp.com/style/images/vargaxtunepeque.png' /><br><h1>Me ha gustado la cancion %s</h1><br><h2>Album: %s</h2><br><h2>Artista: %s</h2><br><img src=%s /></body></html>"""%(cancion,album,artista,imagen))
+    content = Content("text/html","""<html><body><img src='http://vargaxtune.herokuapp.com/style/images/vargaxtunepeque.png' /><br><h1>Me ha gustado la cancion %s</h1><br><h2>Album: %s</h2><br><h2>Artista: %s</h2><br><img src=%s /></body></html>"""%(cancion,album,artista,imagen))
     mail = Mail(from_email, subject, to_email, content)
     response = sg.client.mail.send.post(request_body=mail.get())
     return template('html/correoenviado.tpl',TOKENS=TOKENS,codigocan=codigocan,cont=cont)
