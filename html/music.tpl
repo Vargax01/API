@@ -99,7 +99,6 @@
 	<th><audio src={{cancion["media"]}} controls></audio></th>
 	<th><a title="{{cancion["codigo"]}}" href="/correo/{{cancion["codigo"]}}"><img src="/style/images/like1.png" /></a></th>
 	</tr>	
-	<br>
 % end
 </table>
 </div>
