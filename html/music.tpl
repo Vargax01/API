@@ -52,11 +52,9 @@
 	<th><h2 class="gris">Escuchála</h2></th>
 	</th>
 	</tr>
-% for cancion in listacan:
-	<tr>
-	<th><img src={{cancion["imagen"]}} /></th>	
-	</tr>
+% for cancion in listacan:	
    <tr>
+   <th><img src={{cancion["imagen"]}} /></th>
 	<th><h3 class="azul"><b>{{cancion["nombre"]}}</b></h3></th>
 	<th></th>
 	<th></th>	
