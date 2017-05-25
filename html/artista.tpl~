@@ -2,31 +2,15 @@
 <html lang="es">
 <head>
 <link rel="stylesheet" type="text/css" href="/style/artista.css" />
-<title>Albumes {{album1}}</title>
+<title>Artista {{para1}}</title>
 </head>
 <body>
 <a title="VargaxTune" href="/inicio"><img src="/style/images/vargaxtunepeque.png" /></a>
 <img src="/style/images/itunespeque.png">
-% cont=0
 <table>
-<form id="albumes" action="album" method="post">
-% for album in listalbum:
-	% if cont == 8:
-	   <tr>
-		<th><a title="{{album["codigo"]}}" href="/canciones/{{album["codigo"]}}"><h4>{{album["album"]}}</h4></a>
-		<img src={{album["imagen"]}}>
-		<h4>Artista: {{album["artista"]}}</h4>		
-		</th>
-		</tr>
-		% cont=0
-	% else:
-		<th><a title="{{album["codigo"]}}" href="/canciones/{{album["codigo"]}}"><h4>{{album["album"]}}</h4></a>
-		<img src={{album["imagen"]}}>
-		<h4>Artista: {{album["artista"]}}</h4></th>
-	% end
-% cont=cont+1
+% for artista in listartista:
+<a title="{{artista["codigo"]}}" href="/albumartista/{{artista["codigo"]}}"><h4>{{artista["artista"]}}</h4></a>	
 % end
-</form>
 </table>
 </body>
 </html>

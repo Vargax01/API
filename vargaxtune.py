@@ -154,7 +154,7 @@ def twittear(codigo):
                        resource_owner_secret=TOKENS["access_token_secret"])
       url = 'https://api.twitter.com/1.1/statuses/update.json'
       r = requests.post(url=url,
-                          data={"status":"Me ha gustado la cancion %s de %s"%(cancion,artista)},
+                          data={"status":"Me ha gustado la cancion %s de %s desde vargaxtune.herokuapp.com"%(cancion,artista)},
                           auth=oauth)
       cont=1
       frase=" "
