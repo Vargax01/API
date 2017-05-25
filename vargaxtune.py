@@ -107,6 +107,7 @@ def correo(codigocan):
 
 @route('/correo/<codigocan>',method="post")
 def correo2(codigocan):
+    cont=0
     correo=str(request.forms.get('correo'))
     payload={"id":codigocan,"country":"ES"}
     req=requests.get('https://itunes.apple.com/lookup',params=payload)
@@ -122,7 +123,7 @@ def correo2(codigocan):
     content = Content("text/html","""<html><body><img src='http://apivargax.herokuapp.com/style/images/vargaxtunepeque.png' /><br><h1>Me ha gustado la cancion %s</h1><br><h2>Album: %s</h2><br><h2>Artista: %s</h2><br><img src=%s /></body></html>"""%(cancion,album,artista,imagen))
     mail = Mail(from_email, subject, to_email, content)
     response = sg.client.mail.send.post(request_body=mail.get())
-    return template('html/correoenviado.tpl',TOKENS=TOKENS,codigocan=codigocan)
+    return template('html/correoenviado.tpl',TOKENS=TOKENS,codigocan=codigocan,cont=cont)
 
 @get('/callback')
 def get_verifier():
@@ -155,12 +156,14 @@ def twittear(codigo):
       r = requests.post(url=url,
                           data={"status":"Me ha gustado la cancion %s de %s"%(cancion,artista)},
                           auth=oauth)
+      cont=1
+      frase=" "
       if r.status_code == 200:
-        return """<h2>Tweet Enviado Corrrectamente</h2>
-                    <br><a href='/correo/%s'><h3>Volver Atras</h3></a>"""%(codigo)
+        frase="Tweet Enviado Correctamente"
+        return template('html/correoenviado.tpl',frase=frase,cont=cont,codigo=codigo)
       else:
-        return """<h2>Tu Tweet no fue enviado algo pasó</h2>
-                    <br><a href='/correo/%s'><h3>Volver Atras</h3></a>"""%(codigo)
+        frase="Tu Tweet No fue Enviado hubo un Error Inesperado"
+        return template('html/correoenviado.tpl',frase=frase,cont=cont,codigo=codigo)
     else:
       redirect('/inicio')
 
