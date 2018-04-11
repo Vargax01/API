@@ -126,7 +126,6 @@ def correo2(codigocan):
 
 @get('/callback')
 def get_verifier():
-    print TOKENS
     TOKENS["verifier"] = request.query.oauth_verifier
     get_access_token(TOKENS)
     response.set_cookie("access_token", TOKENS["access_token"],secret='some-secret-key')
@@ -143,10 +142,6 @@ def twittear(codigo):
     if request.get_cookie("access_token", secret='some-secret-key'):
       TOKENS["access_token"]=request.get_cookie("access_token", secret='some-secret-key')
       TOKENS["access_token_secret"]=request.get_cookie("access_token_secret", secret='some-secret-key')
-      print CONSUMER_KEY
-      print CONSUMER_SECRET
-      print TOKENS["access_token"]
-      print TOKENS["access_token_secret"]
       oauth = OAuth1(CONSUMER_KEY,
                        client_secret=CONSUMER_SECRET,
                        resource_owner_key=TOKENS["access_token"],
